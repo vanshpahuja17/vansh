@@ -55,3 +55,4 @@ export default function SignalLight() {
     </div>
   );
 }
+

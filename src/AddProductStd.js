@@ -15,6 +15,7 @@ function AddProductStd({add}) {
         const {name,value} = e.target
         setProd((prev)=>({...prev, [name]:value}))
     }
+
     const onSaveClick=(event)=>{
         event.preventDefault();
         add(prod)
@@ -26,8 +27,6 @@ function AddProductStd({add}) {
         price:''
         })
     }
-
-
 
     return (
         <div className="card p-5 m-5">

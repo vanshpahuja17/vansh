@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
- 
+
 function Shifter(props) {
   const [leftList, setLeftList] = useState([1, 2, 3, 4]);
   const [rightList, setRightList] = useState([5, 6, 7, 8]);
   const [checkedList, setCheckedList] = useState([]);
- 
+
   //To put selected items in check list which is used for shifting
   const handleCheck = (e) => {
     const { value } = e.target;
     const newValue = Number(value);
     if (checkedList.includes(newValue)) {
-      setCheckedList(checkedList.filter((item) => item !== newValue));  //if already unchecks it
+      setCheckedList(checkedList.filter((item) => item !== newValue)); //if already unchecks it
     } else {
       setCheckedList([...checkedList, newValue]);
     }
   };
- 
+
   //To shift all to right
   const handleShiftAllToRight = () => {
     setRightList([...rightList, ...leftList]);
@@ -23,41 +23,38 @@ function Shifter(props) {
     setLeftList([]);
     setCheckedList([]);
   };
- 
+
   //To shift all to left
   const handleShiftAllToLeft = () => {
     setLeftList([...leftList, ...rightList]);
     setRightList([]);
     setCheckedList([]);
   };
- 
+
   //To shift checked to right
   const shiftCheckedToRight = () => {
-    const newRightList = [
-      ...rightList,
-      ...checkedList,
-    ];
+    const newRightList = [...rightList, ...checkedList];
     const newLeftList = leftList.filter((item) => !checkedList.includes(item));
     setRightList(newRightList);
     setLeftList(newLeftList);
     setCheckedList([]);
   };
- 
+
   //To shift checked to left
   const shiftCheckedToLeft = () => {
-    const newRightList = rightList.filter((item) => !checkedList.includes(item));  // return true if item not found in checkedlist
+    const newRightList = rightList.filter(
+      (item) => !checkedList.includes(item)
+    ); // return true if item not found in checkedlist
     const newLeftList = [
       ...leftList,
-      ...checkedList
+      ...checkedList,
       // ...checkedList.filter((item) => rightList.includes(item)),
-
     ];
     setRightList(newRightList);
     setLeftList(newLeftList);
     setCheckedList([]);
   };
 
- 
   return (
     <div className="card p-5 m-5">
       <div className="row">
@@ -87,9 +84,9 @@ function Shifter(props) {
                 <input
                   type="checkbox"
                   value={i}
-                  checked={checkedList.includes(i)}  //To uncheck the boxes when the checkedList becomes empty
+                  checked={checkedList.includes(i)} //To uncheck the boxes when the checkedList becomes empty
                   onChange={(e) => {
-                    handleCheck(e);  //To add to checked List
+                    handleCheck(e); //To add to checked List
                   }}
                 />{" "}
                 {i}
@@ -116,5 +113,5 @@ function Shifter(props) {
     </div>
   );
 }
- 
+
 export default Shifter;
