@@ -23,7 +23,7 @@ function UpdateProductStd({update , product , refresh}) {
     }
 
     return (
-        <div>
+        <div className="card p-5 m-5">
             {/* {JSON.stringify(prod)} */}
             <form>
                 <div class="mb-3">

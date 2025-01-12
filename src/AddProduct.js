@@ -44,7 +44,7 @@ function AddProduct({Add}) {
   // };
 
   return (
-    <div>
+    <div className="card p-5 m-5">
       <form>
         <div class="mb-3">
             <label class="form-label">ID</label>

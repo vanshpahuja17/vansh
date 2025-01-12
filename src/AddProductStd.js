@@ -30,7 +30,7 @@ function AddProductStd({add}) {
 
 
     return (
-        <div>
+        <div className="card p-5 m-5">
             <form>
                 <div class="mb-3">
                     <label>id</label>

@@ -8,7 +8,7 @@ function Shifter(props) {
   //To put selected items in check list which is used for shifting
   const handleCheck = (e) => {
     const { value } = e.target;
-    const newValue = parseInt(value);
+    const newValue = Number(value);
     if (checkedList.includes(newValue)) {
       setCheckedList(checkedList.filter((item) => item !== newValue));  //if already unchecks it
     } else {
@@ -35,7 +35,7 @@ function Shifter(props) {
   const shiftCheckedToRight = () => {
     const newRightList = [
       ...rightList,
-      ...checkedList.filter((item) => leftList.includes(item)),
+      ...checkedList,
     ];
     const newLeftList = leftList.filter((item) => !checkedList.includes(item));
     setRightList(newRightList);
@@ -45,20 +45,21 @@ function Shifter(props) {
  
   //To shift checked to left
   const shiftCheckedToLeft = () => {
-    const newRightList = rightList.filter(
-      (item) => !checkedList.includes(item)  // return true if item not found in checkedlist
-    );
+    const newRightList = rightList.filter((item) => !checkedList.includes(item));  // return true if item not found in checkedlist
     const newLeftList = [
       ...leftList,
-      ...checkedList.filter((item) => rightList.includes(item)),
+      ...checkedList
+      // ...checkedList.filter((item) => rightList.includes(item)),
+
     ];
     setRightList(newRightList);
     setLeftList(newLeftList);
     setCheckedList([]);
   };
+
  
   return (
-    <div className="container-fluid">
+    <div className="card p-5 m-5">
       <div className="row">
         <div className="col-lg-6">
           <p>Left List</p>
@@ -98,16 +99,16 @@ function Shifter(props) {
         </div>
       </div>
       <div className=" d-flex gap-3 ">
-        <button className="btn btn-primary" onClick={handleShiftAllToRight}>
+        <button className="btn btn-primary" onClick={handleShiftAllToLeft}>
           {">>"}
         </button>
-        <button className="btn btn-primary" onClick={shiftCheckedToRight}>
+        <button className="btn btn-primary" onClick={shiftCheckedToLeft}>
           {">"}
         </button>
-        <button className="btn btn-primary" onClick={shiftCheckedToLeft}>
+        <button className="btn btn-primary" onClick={shiftCheckedToRight}>
           {"<"}
         </button>
-        <button className="btn btn-primary" onClick={handleShiftAllToLeft}>
+        <button className="btn btn-primary" onClick={handleShiftAllToRight}>
           {"<<"}
         </button>
       </div>

@@ -3,7 +3,7 @@ import React from 'react';
 function ProductList({prods, onEdit}) {
 
     return (
-        <div>
+        <div className="card p-5 m-5">
            <table>
             <tr>
                 <th>ID</th>

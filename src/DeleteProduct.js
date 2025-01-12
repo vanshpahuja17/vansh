@@ -10,7 +10,7 @@ function DeleteProduct({Delete}) {
     }
 
   return (
-    <div>
+    <div className="card p-5 m-5">
       <div>
 
         <label>Enter Id you want to delete</label><br></br>

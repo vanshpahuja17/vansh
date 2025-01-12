@@ -6,6 +6,8 @@ import DeleteProduct from './DeleteProduct';
 import UpdateProduct from './UpdateProduct';
 import AddProductStd from './AddProductStd';
 import UpdateProductStd from './UpdateProductStd';
+import { useContext } from 'react';
+import { Usercontext } from './userContext';
 
 
 const Products=()=> {
@@ -16,6 +18,8 @@ const Products=()=> {
         { id: 1, pname: "TV", company: "Samsung", model: "abcd", price: 29999 },
         { id: 2, pname: "Computer", company: "LG", model: "xyz", price: 30000 },
       ]);
+      const value = useContext(Usercontext)
+      console.log(value)
 
     //   const [addProduct,setAddProduct] = useState(false);
 
